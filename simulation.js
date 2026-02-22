@@ -501,6 +501,14 @@
         document.getElementById('val-trail').textContent = config.trailAlpha.toFixed(2);
     });
 
+    // Close panel when tapping on canvas
+    canvas.addEventListener('pointerdown', () => {
+        const panel = document.getElementById('controls-panel');
+        if (!panel.classList.contains('hidden')) {
+            panel.classList.add('hidden');
+        }
+    });
+
     // Mouse interaction
     canvas.addEventListener('mousedown', (e) => {
         mouseDown = true;
