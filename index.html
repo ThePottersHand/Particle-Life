@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Life — Emergent Universe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div id="ui-overlay">
+        <header id="title-bar">
+            <h1>Particle Life</h1>
+            <p class="subtitle">Emergent complexity from simple rules</p>
+        </header>
+
+        <div id="controls-toggle" title="Toggle Controls">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="4" y1="12" x2="20" y2="12"></line>
+                <line x1="4" y1="18" x2="20" y2="18"></line>
+                <circle cx="9" cy="6" r="2" fill="currentColor"></circle>
+                <circle cx="15" cy="12" r="2" fill="currentColor"></circle>
+                <circle cx="11" cy="18" r="2" fill="currentColor"></circle>
+            </svg>
+        </div>
+
+        <div id="controls-panel" class="hidden">
+            <section class="control-group">
+                <h2>Universe</h2>
+                <div class="button-row">
+                    <button id="btn-randomize" title="Generate new random rules">New Universe</button>
+                    <button id="btn-reset" title="Reset particle positions">Reset Positions</button>
+                </div>
+                <div class="button-row">
+                    <button id="btn-pause" title="Pause / Resume">Pause</button>
+                    <button id="btn-clear-trails" title="Clear particle trails">Clear Trails</button>
+                </div>
+            </section>
+
+            <section class="control-group">
+                <h2>Presets</h2>
+                <div class="preset-buttons">
+                    <button class="preset-btn" data-preset="symbiosis">Symbiosis</button>
+                    <button class="preset-btn" data-preset="galaxies">Galaxies</button>
+                    <button class="preset-btn" data-preset="mitosis">Mitosis</button>
+                    <button class="preset-btn" data-preset="snakes">Snakes</button>
+                    <button class="preset-btn" data-preset="ecosystem">Ecosystem</button>
+                    <button class="preset-btn" data-preset="chaos">Chaos</button>
+                </div>
+            </section>
+
+            <section class="control-group">
+                <h2>Parameters</h2>
+                <label class="slider-label">
+                    <span>Particles: <span id="val-count">300</span></span>
+                    <input type="range" id="slider-count" min="50" max="1500" value="300" step="50">
+                </label>
+                <label class="slider-label">
+                    <span>Species: <span id="val-species">6</span></span>
+                    <input type="range" id="slider-species" min="2" max="8" value="6" step="1">
+                </label>
+                <label class="slider-label">
+                    <span>Interaction Range: <span id="val-range">120</span></span>
+                    <input type="range" id="slider-range" min="40" max="300" value="120" step="10">
+                </label>
+                <label class="slider-label">
+                    <span>Friction: <span id="val-friction">0.15</span></span>
+                    <input type="range" id="slider-friction" min="0.01" max="0.50" value="0.15" step="0.01">
+                </label>
+                <label class="slider-label">
+                    <span>Force Strength: <span id="val-force">1.0</span></span>
+                    <input type="range" id="slider-force" min="0.1" max="3.0" value="1.0" step="0.1">
+                </label>
+                <label class="slider-label">
+                    <span>Trail Length: <span id="val-trail">0.12</span></span>
+                    <input type="range" id="slider-trail" min="0.02" max="1.00" value="0.12" step="0.02">
+                </label>
+            </section>
+
+            <section class="control-group">
+                <h2>Rule Matrix</h2>
+                <p class="matrix-hint">How each species (row) feels about others (column). Green = attract, Red = repel.</p>
+                <div id="rule-matrix"></div>
+            </section>
+
+            <section class="control-group">
+                <h2>Info</h2>
+                <div id="stats">
+                    <span id="fps">60 FPS</span>
+                </div>
+                <p class="info-text">
+                    Each particle follows simple rules — attract or repel other species at varying strengths.
+                    From these minimal interactions, complex life-like structures emerge: orbiting clusters,
+                    flowing streams, pulsing organisms, and self-organizing ecosystems.
+                </p>
+                <p class="info-text">Click and drag on the canvas to attract particles.</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="simulation.js"></script>
+</body>
+</html>
